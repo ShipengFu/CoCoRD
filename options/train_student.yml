@@ -4,7 +4,7 @@ gpu: 0 # GPU id to use
 
 dataset: cifar100 # dataset name
 data_folder: ./data_cifar100 # path to dataset
-batch_size: 64 # mini-batch size, this is the total batch size of all GPUs on the current node when using Data Parallel or Distributed Data Parallel'
+batch_size: 64 # mini-batch size
 num_workers: 8 # number of data loading workers
 
 start_epoch: 0 # manual epoch number (useful on restarts)
@@ -32,7 +32,7 @@ cocord:
 distill: cocord
 seed: null
 pin_memory: true
-loss_ctr: !!float 1.0
-loss_cls: !!float 1.0
-loss_pred: !!float 4.0
-n_cls: 100
+loss_ctr: !!float 1.0 # the weight of the contrastive loss
+loss_cls: !!float 1.0 # the weight of the cross-entropy loss
+loss_pred: !!float 4.0 # the weight of the prediction loss
+n_cls: 100 # how many classes from the training dataset.
