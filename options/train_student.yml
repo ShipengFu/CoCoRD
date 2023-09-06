@@ -1,0 +1,38 @@
+student_model: resnet20 # student model
+teacher_model: resnet56 # teacher model
+gpu: 0 # GPU id to use
+
+dataset: cifar100 # dataset name
+data_folder: ./data_cifar100 # path to dataset
+batch_size: 64 # mini-batch size, this is the total batch size of all GPUs on the current node when using Data Parallel or Distributed Data Parallel'
+num_workers: 8 # number of data loading workers
+
+start_epoch: 0 # manual epoch number (useful on restarts)
+epochs: 240 # number of total epochs to run
+learning_rate: 0.05 # initial learning rate
+lr_decay_epochs: [150, 180, 210] # learning rate schedule (when to drop lr)
+lr_decay_rate: 0.1 # decay rate for learning rate
+weight_decay: !!float 5e-4 # weight_decay
+momentum: 0.9 # momentum of SGD optimizer
+print_freq: 300 # print frequency
+
+path:
+  resume: null # path to latest checkpoint for resuming
+  teacher: ./t_model/resnet56/ckpt_epoch_240.pth # path to teacher checkpoint
+
+cocord:
+  T: 0.10 # softmax temperature
+  key_size: 2048 # queue size; number of negative keys
+  momentum: 0.999 # cocord momentum of updating key encoder
+  b_momentum: 0.9 # momentum of the slow-moving student
+  pred_dim: 512 # hidden dimensions in the predictor
+  hidden_dim: 2048 # hidden dimensions in the projector
+  embedding_dim: 2048 # dimensions of projector output
+
+distill: cocord
+seed: null
+pin_memory: true
+loss_ctr: !!float 1.0
+loss_cls: !!float 1.0
+loss_pred: !!float 4.0
+n_cls: 100
