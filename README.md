@@ -52,7 +52,14 @@ The red arrow denotes underperforming KD. The green arrow denotes outperforming 
 If you find our work useful for your research, please consider citing the paper
 
 ```letex
-
+@inproceedings{CoCoRD_Fu_bmvc23,
+  author       = {Shipeng Fu and Haoran Yang and Xiaomin Yang},
+  title        = {Contrastive Consistent Representation Distillation},
+  booktitle    = {34th British Machine Vision Conference 2023, {BMVC} 2023},
+  pages        = {300--303},
+  publisher    = {{BMVA} Press},
+  year         = {2023},
+}
 ```
 
 For any questions, please contact Shipeng Fu (fushipeng97@gmail.com).
